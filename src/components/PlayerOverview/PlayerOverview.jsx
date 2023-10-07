@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn';
-import playerIcon from '../../assets/icons/player.png';
+import scoreIcon from '../../assets/icons/score.png';
 import githubIcon from '../../assets/icons/github.png';
 import pbIcon from '../../assets/icons/pb.png';
 import PlayerBar from '../PlayerBar/PlayerBar';
 import PlayerManager from '../../utils/PlayerManager';
-import { Link, useNavigate } from 'react-router-dom';
-export default class Calculator extends Component {
+import { Link } from 'react-router-dom';
+
+export default class PlayerOverview extends Component {
     state = {
         numberStr: 'iScore',
         number: 0,
@@ -15,7 +16,6 @@ export default class Calculator extends Component {
         add: false,
         subtract: false,
     };
-
     log(x) {
         console.log(x);
     }
@@ -83,17 +83,11 @@ export default class Calculator extends Component {
         PlayerManager.addPlayer('Papa', 'green');
         PlayerManager.addPlayer('Mama', 'blue');
         PlayerManager.setCurrentPlayer('Phil');
-        this.goToPlayerUrl();
-    };
-
-    goToPlayerUrl = () => {
-        useNavigate('/player');
     };
 
     render() {
         return (
             <div>
-                <PlayerBar></PlayerBar>
                 <div className="container">
                     <div class="display">
                         <div class="displayText">{this.state.numberStr}</div>
@@ -194,13 +188,13 @@ export default class Calculator extends Component {
                         <DoubleBtn
                             class="first"
                             onClick={() => this.onNumberClick(0)}
-                            text="0"
+                            text="<"
                             btnWidth="170"></DoubleBtn>
-                        <Link class="calBtn grey" to="/player">
-                            <img class="icon" src={playerIcon} alt="P"></img>
+                        <Link class="calBtn grey" to="/">
+                            <img class="icon" src={scoreIcon} alt="S"></img>
                         </Link>
                         <button class="calBtn orange" onClick={this.equal}>
-                            =
+                            {'>'}
                         </button>
                     </div>
                 </div>

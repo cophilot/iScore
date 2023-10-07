@@ -1,0 +1,33 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    .timer {
+        position: absolute;
+        left: 5px;
+        color: white;
+        font-size: 15px;
+        margin-top: 3px;
+    }
+    .iScore {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 15px;
+        margin-top: 3px;
+    }
+    .round {
+        position: absolute;
+        right: 5px;
+        color: white;
+        font-size: 15px;
+        margin-top: 3px;
+        border: 1px solid white;
+        border-radius: 3px;
+        width: 30px;
+        text-align: center;
+    }
+}

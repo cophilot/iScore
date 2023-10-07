@@ -12,11 +12,22 @@ export default class PlayerBar extends Component {
                     name={player.name}
                     color={player.color}
                     score={player.score}
-                    active={false}
+                    active={
+                        player.name ===
+                        (PlayerManager.currentPlayer == null
+                            ? ''
+                            : PlayerManager.currentPlayer.name)
+                    }
                     onClick={() => {}}></PlayerElement>
             );
         }
-
+        if (playerElements.length === 0) {
+            playerElements.push(
+                <i style={{ color: 'white', marginTop: 10 }}>
+                    No players yet. Click the player icon to add a player.
+                </i>
+            );
+        }
         return (
             <div class="scrollable-container">
                 <div class="scrollable-content">{playerElements}</div>
