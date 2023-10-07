@@ -1,0 +1,40 @@
+.circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+}
+
+.middle {
+    margin-left: -38px;
+    height: 75px;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    background-color: #333333;
+}
+
+.right {
+    margin-left: -38px;
+}
+
+.left {
+    z-index: 10;
+}
+
+.dblBtn {
+    display: flex;
+}
+.hv {
+    &:hover {
+        scale: 1.1;
+    }
+}
