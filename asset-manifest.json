@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/iScore/static/css/main.f09fbb2b.css",
+    "main.js": "/iScore/static/js/main.fb2b473f.js",
+    "index.html": "/iScore/index.html",
+    "main.f09fbb2b.css.map": "/iScore/static/css/main.f09fbb2b.css.map",
+    "main.fb2b473f.js.map": "/iScore/static/js/main.fb2b473f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f09fbb2b.css",
+    "static/js/main.fb2b473f.js"
+  ]
+}
