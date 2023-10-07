@@ -5,12 +5,15 @@ class PlayerManager {
     static currentPlayer = undefined;
 
     static addPlayer(name, color) {
-        this.players.forEach((player) => {
-            if (player.name === name) {
+        for (let i = 0; i < this.players.length; i++) {
+            if (this.players[i].name === name) {
                 return false;
             }
-        });
+        }
         this.players.push(new Player(name, color));
+        if (this.currentPlayer === undefined) {
+            this.currentPlayer = this.players[0];
+        }
         return true;
     }
 

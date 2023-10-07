@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 export default class PlayerOverview extends Component {
     state = {
-        numberStr: 'iScore',
+        numberStr: 'Players',
         number: 0,
         number2: 0,
         add: false,
@@ -175,14 +175,12 @@ export default class PlayerOverview extends Component {
                             onClick={() => this.onNumberClick(3)}>
                             3
                         </button>
-                        <button
-                            class={
-                                'calBtn ' +
-                                (this.state.add ? 'activatedBtn' : 'orange')
-                            }
-                            onClick={this.toggleAdd}>
+                        <Link
+                            class="calBtn orange"
+                            to="/add-player"
+                            style={{ textDecoration: 'none' }}>
                             +
-                        </button>
+                        </Link>
                     </div>
                     <div class="row">
                         <DoubleBtn
