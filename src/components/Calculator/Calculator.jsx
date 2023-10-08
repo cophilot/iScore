@@ -52,13 +52,17 @@ export default class Calculator extends Component {
             let newNumber = this.state.number + this.state.number2;
             this.setState({ number: newNumber });
             this.setState({ numberStr: newNumber });
-            PlayerManager.currentPlayer.score = newNumber;
+            if (PlayerManager.currentPlayer) {
+                PlayerManager.currentPlayer.score = newNumber;
+            }
         } else if (this.state.subtract) {
             let newNumber = this.state.number - this.state.number2;
             this.setState({ number: newNumber });
             this.setState({ numberStr: newNumber });
-            PlayerManager.currentPlayer.score = newNumber;
-        } else {
+            if (PlayerManager.currentPlayer) {
+                PlayerManager.currentPlayer.score = newNumber;
+            }
+        } else if (PlayerManager.currentPlayer) {
             PlayerManager.rotate();
             this.setState({ number: PlayerManager.currentPlayer.score });
             this.setState({ numberStr: PlayerManager.currentPlayer.score });

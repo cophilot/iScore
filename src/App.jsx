@@ -4,12 +4,13 @@ import PlayerOverview from './components/PlayerOverview/PlayerOverview.jsx';
 import './index.scss';
 import Header from './components/Header/Header.jsx';
 
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Route, Routes } from 'react-router-dom';
 import AddPlayer from './components/AddPlayer/AddPlayer.jsx';
+
 export default class App extends Component {
     render() {
         return (
-            <Router>
+            <HashRouter>
                 <div>
                     <div class="background"></div>
                     <Header></Header>
@@ -21,11 +22,11 @@ export default class App extends Component {
                             path="add-player"
                             element={<AddPlayer></AddPlayer>}></Route>
                         <Route
-                            path="/"
+                            path=""
                             element={<Calculator></Calculator>}></Route>
                     </Routes>
                 </div>
-            </Router>
+            </HashRouter>
         );
     }
 }
