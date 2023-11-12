@@ -1,10 +1,10 @@
+/* eslint-disable indent */
 import React, { Component } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn';
 import scoreIcon from '../../assets/icons/score.png';
 import githubIcon from '../../assets/icons/github.png';
 import pbIcon from '../../assets/icons/pb.png';
-import PlayerBar from '../PlayerBar/PlayerBar';
 import PlayerManager from '../../utils/PlayerManager';
 import { Link } from 'react-router-dom';
 
@@ -89,67 +89,72 @@ export default class PlayerOverview extends Component {
         return (
             <div>
                 <div className="container">
-                    <div class="display">
-                        <div class="displayText">{this.state.numberStr}</div>
+                    <div className="display">
+                        <div className="displayText">
+                            {this.state.numberStr}
+                        </div>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class="calBtn lightGrey first"
+                            className="calBtn lightGrey first"
                             onClick={this.clear}>
                             C
                         </button>
                         <a
-                            class="calBtn lightGrey"
+                            className="calBtn lightGrey"
                             href="https://github.com/phil1436/iScore"
                             target="_blank"
                             rel="noreferrer">
-                            <img class="icon" src={githubIcon} alt="GH"></img>
+                            <img
+                                className="icon"
+                                src={githubIcon}
+                                alt="GH"></img>
                         </a>
                         <a
-                            class="calBtn lightGrey"
+                            className="calBtn lightGrey"
                             href="https://philipp-bonin.com/"
                             target="_blank"
                             rel="noreferrer">
-                            <img class="icon" src={pbIcon} alt="PB"></img>
+                            <img className="icon" src={pbIcon} alt="PB"></img>
                         </a>
-                        <button class="calBtn orange">?</button>
+                        <button className="calBtn orange">?</button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class="calBtn grey first"
+                            className="calBtn grey first"
                             onClick={() => this.onNumberClick(7)}>
                             7
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(8)}>
                             8
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(9)}>
                             9
                         </button>
-                        <button class="calBtn orange">?</button>
+                        <button className="calBtn orange">?</button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class="calBtn grey first"
+                            className="calBtn grey first"
                             onClick={() => this.onNumberClick(4)}>
                             4
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(5)}>
                             5
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(6)}>
                             6
                         </button>
                         <button
-                            class={
+                            className={
                                 'calBtn ' +
                                 (this.state.subtract
                                     ? 'activatedBtn'
@@ -159,39 +164,39 @@ export default class PlayerOverview extends Component {
                             -
                         </button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class="calBtn grey first"
+                            className="calBtn grey first"
                             onClick={() => this.onNumberClick(1)}>
                             1
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(2)}>
                             2
                         </button>
                         <button
-                            class="calBtn grey"
+                            className="calBtn grey"
                             onClick={() => this.onNumberClick(3)}>
                             3
                         </button>
                         <Link
-                            class="calBtn orange"
-                            to="/add-player"
+                            className="calBtn orange"
+                            to="/iScore/add-player"
                             style={{ textDecoration: 'none' }}>
                             +
                         </Link>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <DoubleBtn
-                            class="first"
+                            className="first"
                             onClick={() => this.onNumberClick(0)}
                             text="<"
                             btnWidth="170"></DoubleBtn>
-                        <Link class="calBtn grey" to="/">
-                            <img class="icon" src={scoreIcon} alt="S"></img>
+                        <Link className="calBtn grey" to="/iScore">
+                            <img className="icon" src={scoreIcon} alt="S"></img>
                         </Link>
-                        <button class="calBtn orange" onClick={this.equal}>
+                        <button className="calBtn orange" onClick={this.equal}>
                             {'>'}
                         </button>
                     </div>

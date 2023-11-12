@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { Component } from 'react';
 import './PlayerElement.scss';
 import PlayerManager from '../../utils/PlayerManager';
@@ -9,16 +10,22 @@ export default class PlayerElement extends Component {
     render() {
         return (
             <div
-                class={'box ' + (this.props.active ? 'active' : '')}
+                className={'box ' + (this.props.active ? 'active' : '')}
                 onClick={this.selectPlayer}>
                 <div
-                    class="colorIcon"
+                    className="colorIcon"
                     style={{ backgroundColor: this.props.color }}></div>
-                <div class="textBox">
-                    <p class={'name ' + (this.props.active ? 'active' : '')}>
+                <div className="textBox">
+                    <p
+                        className={
+                            'name ' + (this.props.active ? 'active' : '')
+                        }>
                         {this.props.name}
                     </p>
-                    <p class={'score ' + (this.props.active ? 'active' : '')}>
+                    <p
+                        className={
+                            'score ' + (this.props.active ? 'active' : '')
+                        }>
                         {this.props.score}
                     </p>
                 </div>

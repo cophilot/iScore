@@ -3,6 +3,7 @@ import Player from './Player';
 class PlayerManager {
     static players = [];
     static currentPlayer = undefined;
+    static roundTest = 1;
 
     static addPlayer(name, color) {
         for (let i = 0; i < this.players.length; i++) {
@@ -24,6 +25,7 @@ class PlayerManager {
             }
         });
     }
+
     static rotate() {
         let index = this.players.indexOf(this.currentPlayer);
         // remove player at index
@@ -48,6 +50,13 @@ class PlayerManager {
             round = 1;
         }
         return round;
+    }
+    static getCurrentRoundTest() {
+        return this.roundTest;
+    }
+
+    static imcrementRoundTest() {
+        this.roundTest++;
     }
 }
 

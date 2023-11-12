@@ -1,7 +1,9 @@
+/* eslint-disable indent */
 import React, { Component } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn';
 import playerIcon from '../../assets/icons/player.png';
+import scoreIcon from '../../assets/icons/score.png';
 import githubIcon from '../../assets/icons/github.png';
 import pbIcon from '../../assets/icons/pb.png';
 import PlayerManager from '../../utils/PlayerManager';
@@ -73,9 +75,9 @@ export default class AddPlayer extends Component {
             <div>
                 <div className="container">
                     <p style={{ color: 'red' }}>{this.state.wrongtext}</p>
-                    <div class="display">
+                    <div className="display">
                         <input
-                            class="inputText"
+                            className="inputText"
                             placeholder="Add a Player"
                             value={this.state.nameInput}
                             onChange={(e) =>
@@ -83,31 +85,34 @@ export default class AddPlayer extends Component {
                             }
                         />
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class="calBtn lightGrey first"
+                            className="calBtn lightGrey first"
                             onClick={this.clear}>
                             C
                         </button>
                         <a
-                            class="calBtn lightGrey"
+                            className="calBtn lightGrey"
                             href="https://github.com/phil1436/iScore"
                             target="_blank"
                             rel="noreferrer">
-                            <img class="icon" src={githubIcon} alt="GH"></img>
+                            <img
+                                className="icon"
+                                src={githubIcon}
+                                alt="GH"></img>
                         </a>
                         <a
-                            class="calBtn lightGrey"
+                            className="calBtn lightGrey"
                             href="https://philipp-bonin.com/"
                             target="_blank"
                             rel="noreferrer">
-                            <img class="icon" src={pbIcon} alt="PB"></img>
+                            <img className="icon" src={pbIcon} alt="PB"></img>
                         </a>
-                        <button class="calBtn orange">?</button>
+                        <button className="calBtn orange">?</button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class={
+                            className={
                                 'calBtn first' +
                                 (this.state.activeColor === 'red'
                                     ? ' circled'
@@ -116,7 +121,7 @@ export default class AddPlayer extends Component {
                             style={{ backgroundColor: 'red' }}
                             onClick={() => this.onColorClick('red')}></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'blue'
                                     ? ' circled'
@@ -125,7 +130,7 @@ export default class AddPlayer extends Component {
                             style={{ backgroundColor: 'blue' }}
                             onClick={() => this.onColorClick('blue')}></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'green'
                                     ? ' circled'
@@ -134,11 +139,11 @@ export default class AddPlayer extends Component {
                             style={{ backgroundColor: 'green' }}
                             onClick={() => this.onColorClick('green')}></button>
 
-                        <button class="calBtn orange">?</button>
+                        <button className="calBtn orange">?</button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class={
+                            className={
                                 'calBtn first' +
                                 (this.state.activeColor === 'yellow'
                                     ? ' circled'
@@ -149,7 +154,7 @@ export default class AddPlayer extends Component {
                                 this.onColorClick('yellow')
                             }></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'purple'
                                     ? ' circled'
@@ -160,7 +165,7 @@ export default class AddPlayer extends Component {
                                 this.onColorClick('purple')
                             }></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'darkblue'
                                     ? ' circled'
@@ -171,7 +176,7 @@ export default class AddPlayer extends Component {
                                 this.onColorClick('darkblue')
                             }></button>
                         <button
-                            class={
+                            className={
                                 'calBtn ' +
                                 (this.state.subtract
                                     ? 'activatedBtn'
@@ -181,9 +186,9 @@ export default class AddPlayer extends Component {
                             -
                         </button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <button
-                            class={
+                            className={
                                 'calBtn first' +
                                 (this.state.activeColor === 'orange'
                                     ? ' circled'
@@ -194,7 +199,7 @@ export default class AddPlayer extends Component {
                                 this.onColorClick('orange')
                             }></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'grey'
                                     ? ' circled'
@@ -203,7 +208,7 @@ export default class AddPlayer extends Component {
                             style={{ backgroundColor: 'grey' }}
                             onClick={() => this.onColorClick('grey')}></button>
                         <button
-                            class={
+                            className={
                                 'calBtn' +
                                 (this.state.activeColor === 'magenta'
                                     ? ' circled'
@@ -214,7 +219,7 @@ export default class AddPlayer extends Component {
                                 this.onColorClick('magenta')
                             }></button>
                         <button
-                            class={
+                            className={
                                 'calBtn ' +
                                 (this.state.add ? 'activatedBtn' : 'orange')
                             }
@@ -222,18 +227,21 @@ export default class AddPlayer extends Component {
                             +
                         </button>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <DoubleBtn
-                            class="first"
+                            className="first"
                             onClick={this.equal}
                             text="Add"
                             btnWidth="170"></DoubleBtn>
-                        <Link class="calBtn grey" to="/player">
-                            <img class="icon" src={playerIcon} alt="P"></img>
+                        <Link className="calBtn grey" to="/iScore/player">
+                            <img
+                                className="icon"
+                                src={playerIcon}
+                                alt="P"></img>
                         </Link>
-                        <button class="calBtn orange" onClick={this.equal}>
-                            =
-                        </button>
+                        <Link className="calBtn orange" to="/iScore">
+                            <img className="icon" src={scoreIcon} alt="S"></img>
+                        </Link>
                     </div>
                 </div>
             </div>

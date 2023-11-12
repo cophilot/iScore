@@ -9,12 +9,12 @@ export default class DoubleBtn extends Component {
 
     render() {
         return (
-            <div class="dblBtn" onClick={this.props.onClick}>
-                <button class="left circle">{this.props.text}</button>
+            <div className="dblBtn" onClick={this.props.onClick}>
+                <button className="left circle">{this.props.text}</button>
                 <div
-                    class="middle"
+                    className="middle"
                     style={{ width: this.props.btnWidth - 75 }}></div>
-                <div class="right circle"></div>
+                <div className="right circle"></div>
             </div>
         );
     }

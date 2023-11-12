@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { Component } from 'react';
 import './PlayerBar.scss';
 import PlayerElement from './PlayerElement';
@@ -18,7 +19,9 @@ export default class PlayerBar extends Component {
                             ? ''
                             : PlayerManager.currentPlayer.name)
                     }
-                    onClick={() => {}}></PlayerElement>
+                    onClick={() => {
+                        null;
+                    }}></PlayerElement>
             );
         }
         if (playerElements.length === 0) {
@@ -29,8 +32,8 @@ export default class PlayerBar extends Component {
             );
         }
         return (
-            <div class="scrollable-container">
-                <div class="scrollable-content">{playerElements}</div>
+            <div className="scrollable-container">
+                <div className="scrollable-content">{playerElements}</div>
             </div>
         );
     }
