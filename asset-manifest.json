@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/iScore/static/css/main.f09fbb2b.css",
-    "main.js": "/iScore/static/js/main.1512faf7.js",
+    "main.js": "/iScore/static/js/main.a233621d.js",
     "index.html": "/iScore/index.html",
     "main.f09fbb2b.css.map": "/iScore/static/css/main.f09fbb2b.css.map",
-    "main.1512faf7.js.map": "/iScore/static/js/main.1512faf7.js.map"
+    "main.a233621d.js.map": "/iScore/static/js/main.a233621d.js.map"
   },
   "entrypoints": [
     "static/css/main.f09fbb2b.css",
-    "static/js/main.1512faf7.js"
+    "static/js/main.a233621d.js"
   ]
 }
