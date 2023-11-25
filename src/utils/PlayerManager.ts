@@ -1,8 +1,8 @@
-import Player from './Player';
+import Player from './Player.ts';
 
 class PlayerManager {
-    static players = [];
-    static currentPlayer = undefined;
+    static players: Player[] = [];
+    static currentPlayer?: Player = undefined;
     static roundTest = 1;
 
     static addPlayer(name, color) {
@@ -27,6 +27,10 @@ class PlayerManager {
     }
 
     static rotate() {
+        if (this.currentPlayer === undefined) {
+            return;
+        }
+
         let index = this.players.indexOf(this.currentPlayer);
         // remove player at index
         this.players.splice(index, 1);
@@ -38,17 +42,19 @@ class PlayerManager {
     }
 
     static getCurrentRound() {
-        let round = undefined;
-        this.players.forEach((player) => {
-            if (round === undefined) {
+        let round = 1;
+        this.players.forEach((player, index) => {
+            if (index === 0) {
+                round = player.round;
+                return;
+            }
+
+            if (round === null) {
                 round = player.round;
             } else if (round > player.round) {
                 round = player.round;
             }
         });
-        if (round === undefined) {
-            round = 1;
-        }
         return round;
     }
     static getCurrentRoundTest() {

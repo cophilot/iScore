@@ -1,33 +1,38 @@
 /* eslint-disable indent */
 import React, { Component } from 'react';
-import Calculator from './components/Calculator/Calculator.jsx';
+import Calculator from './components/Calculator/Calculator.tsx';
 import PlayerOverview from './components/PlayerOverview/PlayerOverview.jsx';
 import './index.scss';
 import Header from './components/Header/Header.tsx';
+import Settings from './components/Settings/Settings.tsx';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AddPlayer from './components/AddPlayer/AddPlayer.jsx';
+import { Route, Routes, HashRouter } from 'react-router-dom';
+import AddPlayer from './components/AddPlayer/AddPlayer.tsx';
 
 export default class App extends Component {
     render() {
         return (
-            <Router>
-                <div>
-                    <div className="background"></div>
-                    <Header></Header>
+            <div>
+                <div className="background"></div>
+                <Header></Header>
+                <HashRouter>
                     <Routes>
                         <Route
-                            path="iScore/player"
+                            path="/player"
                             element={<PlayerOverview></PlayerOverview>}></Route>
                         <Route
-                            path="iScore/add-player"
+                            path="/add-player"
                             element={<AddPlayer></AddPlayer>}></Route>
                         <Route
-                            path="iScore"
+                            path="/settings"
+                            element={<Settings></Settings>}></Route>
+                        <Route
+                            path="/"
                             element={<Calculator></Calculator>}></Route>
+                        <Route path="*" element={<Calculator />} />
                     </Routes>
-                </div>
-            </Router>
+                </HashRouter>
+            </div>
         );
     }
 }

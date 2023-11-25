@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './PlayerBar.scss';
 import PlayerElement from './PlayerElement';
-import PlayerManager from '../../utils/PlayerManager';
+import PlayerManager from '../../utils/PlayerManager.ts';
 
 export default class PlayerBar extends Component {
     render() {

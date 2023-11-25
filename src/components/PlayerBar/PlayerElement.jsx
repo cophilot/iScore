@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React, { Component } from 'react';
 import './PlayerElement.scss';
-import PlayerManager from '../../utils/PlayerManager';
+import PlayerManager from '../../utils/PlayerManager.ts';
 export default class PlayerElement extends Component {
     selectPlayer = () => {
         PlayerManager.setCurrentPlayer(this.props.name);

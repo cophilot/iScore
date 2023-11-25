@@ -1,5 +1,10 @@
 class Player {
-    constructor(name, color) {
+    name: string;
+    color: string;
+    score: number;
+    round: number;
+
+    constructor(name: string, color: string) {
         this.name = name;
         this.color = color;
         this.score = 0;

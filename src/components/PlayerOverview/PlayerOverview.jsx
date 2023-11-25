@@ -1,11 +1,12 @@
 /* eslint-disable indent */
 import React, { Component } from 'react';
 import '../global.scss';
-import DoubleBtn from '../DoubleBtn/DoubleBtn';
+import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import scoreIcon from '../../assets/icons/score.png';
 import githubIcon from '../../assets/icons/github.png';
 import pbIcon from '../../assets/icons/pb.png';
-import PlayerManager from '../../utils/PlayerManager';
+import PlayerManager from '../../utils/PlayerManager.ts';
+import SettingsButton from '../SettingsButton/SettingsButton.tsx';
 import { Link } from 'react-router-dom';
 
 export default class PlayerOverview extends Component {
@@ -117,7 +118,7 @@ export default class PlayerOverview extends Component {
                             rel="noreferrer">
                             <img className="icon" src={pbIcon} alt="PB"></img>
                         </a>
-                        <button className="calBtn orange">?</button>
+                        <SettingsButton></SettingsButton>
                     </div>
                     <div className="row">
                         <button
@@ -182,7 +183,7 @@ export default class PlayerOverview extends Component {
                         </button>
                         <Link
                             className="calBtn orange"
-                            to="/iScore/add-player"
+                            to="/add-player"
                             style={{ textDecoration: 'none' }}>
                             +
                         </Link>
@@ -191,9 +192,10 @@ export default class PlayerOverview extends Component {
                         <DoubleBtn
                             className="first"
                             onClick={() => this.onNumberClick(0)}
-                            text="<"
-                            btnWidth="170"></DoubleBtn>
-                        <Link className="calBtn grey" to="/iScore">
+                            btnWidth="170">
+                            {'<'}
+                        </DoubleBtn>
+                        <Link className="calBtn grey" to="/">
                             <img className="icon" src={scoreIcon} alt="S"></img>
                         </Link>
                         <button className="calBtn orange" onClick={this.equal}>

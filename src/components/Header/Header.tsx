@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './Header.scss';
-import PlayerManager from '../../utils/PlayerManager';
+import PlayerManager from '../../utils/PlayerManager.ts';
 
 function Header() {
     const [time, setTime] = useState(0);
