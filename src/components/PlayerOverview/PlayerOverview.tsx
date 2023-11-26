@@ -26,21 +26,24 @@ function PlayerOverview() {
                 <div className="row">
                     <button
                         className="calBtn lightGrey first"
-                        onClick={doNothing}>
+                        onClick={doNothing}
+                    >
                         C
                     </button>
                     <a
                         className="calBtn lightGrey"
                         href="https://github.com/phil1436/iScore"
                         target="_blank"
-                        rel="noreferrer">
+                        rel="noreferrer"
+                    >
                         <img className="icon" src={githubIcon} alt="GH"></img>
                     </a>
                     <a
                         className="calBtn lightGrey"
                         href="https://philipp-bonin.com/"
                         target="_blank"
-                        rel="noreferrer">
+                        rel="noreferrer"
+                    >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
                     <SettingsButton></SettingsButton>
@@ -84,7 +87,8 @@ function PlayerOverview() {
                     <Link
                         className="calBtn orange"
                         to="/add-player"
-                        style={{ textDecoration: 'none' }}>
+                        style={{ textDecoration: 'none' }}
+                    >
                         +
                     </Link>
                 </div>
@@ -92,12 +96,12 @@ function PlayerOverview() {
                     <DoubleBtn onClick={doNothing} btnWidth={170}>
                         {'<'}
                     </DoubleBtn>
-                    <Link className="calBtn grey" to="/">
-                        <img className="icon" src={scoreIcon} alt="S"></img>
-                    </Link>
-                    <button className="calBtn orange" onClick={doNothing}>
+                    <button className="calBtn grey" onClick={doNothing}>
                         {'>'}
                     </button>
+                    <Link className="calBtn orange" to="/">
+                        <img className="icon" src={scoreIcon} alt="S"></img>
+                    </Link>
                 </div>
             </div>
         </div>

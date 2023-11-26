@@ -1,6 +1,6 @@
 import React from 'react';
 import './PlayerElement.scss';
-import PlayerManager from '../../utils/PlayerManager.ts';
+import { useSetCurrentPlayer } from '../../providers/PlayerProvider.tsx';
 
 interface Props {
     name: string;
@@ -10,14 +10,17 @@ interface Props {
 }
 
 function PlayerElement({ name, color, score, active }: Props) {
+    const setCurrentPlayer = useSetCurrentPlayer();
+
     const selectPlayer = () => {
-        PlayerManager.setCurrentPlayer(name);
+        setCurrentPlayer(name);
     };
 
     return (
         <div
             className={'box ' + (active ? 'active' : '')}
-            onClick={selectPlayer}>
+            onClick={selectPlayer}
+        >
             <div className="colorIcon" style={{ backgroundColor: color }}></div>
             <div className="textBox">
                 <p className={'name ' + (active ? 'active' : '')}>{name}</p>

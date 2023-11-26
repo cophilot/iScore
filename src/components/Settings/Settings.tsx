@@ -4,11 +4,14 @@ import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import './Settings.scss';
 import { Link } from 'react-router-dom';
 import { useResetTimer } from '../../providers/TimeProvider.tsx';
+import { usePlayerReset } from '../../providers/PlayerProvider.tsx';
 
 function Settings() {
     const btnWidth = window.innerWidth * 0.9;
 
     const resetTimer = useResetTimer();
+
+    const resetPlayers = usePlayerReset();
 
     return (
         <div className="container settingsBox">
@@ -22,7 +25,14 @@ function Settings() {
             >
                 Reset Timer
             </DoubleBtn>
-            <DoubleBtn onClick={() => {}} btnWidth={btnWidth} middleText={true}>
+            <DoubleBtn
+                onClick={() => {
+                    resetPlayers();
+                    resetTimer();
+                }}
+                btnWidth={btnWidth}
+                middleText={true}
+            >
                 Reset All
             </DoubleBtn>
             <Link to="/">
@@ -30,6 +40,7 @@ function Settings() {
                     onClick={() => {}}
                     btnWidth={btnWidth}
                     middleText={true}
+                    orange={true}
                 >
                     Back
                 </DoubleBtn>

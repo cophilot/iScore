@@ -10,6 +10,10 @@ class Player {
         this.score = 0;
         this.round = 1;
     }
+
+    static getEmptyPlayerArray(): Player[] {
+        return [];
+    }
 }
 
 export default Player;

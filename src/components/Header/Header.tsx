@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import './Header.scss';
-import PlayerManager from '../../utils/PlayerManager.ts';
 import { useTime } from '../../providers/TimeProvider.tsx';
+import { useGetCurrentRound } from '../../providers/PlayerProvider.tsx';
 
 function Header() {
+    const getCurrentRound = useGetCurrentRound();
+
     const time = useTime();
 
     const hours: number = Math.floor(time / 3600);
@@ -21,7 +23,7 @@ function Header() {
                 {seconds.toString().padStart(2, '0')}
             </p>
             <div className="iScore">iScore</div>
-            <div className="round">{1}</div>
+            <div className="round">{getCurrentRound()}</div>
         </div>
     );
 }
