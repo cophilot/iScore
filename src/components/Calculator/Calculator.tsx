@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
+import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
 import playerIcon from '../../assets/icons/player.png';
 import githubIcon from '../../assets/icons/github.png';
 import pbIcon from '../../assets/icons/pb.png';
-import PlayerBar from '../PlayerBar/PlayerBar.jsx';
+import PlayerBar from '../PlayerBar/PlayerBar.tsx';
 import PlayerManager from '../../utils/PlayerManager.ts';
 import { Link } from 'react-router-dom';
 
@@ -75,19 +76,6 @@ function Calculator() {
         setNumberStr('0');
     };
 
-    /* const addPlayer = () => {
-        PlayerManager.addPlayer('Phil', 'red');
-        PlayerManager.addPlayer('Viki', 'yellow');
-        PlayerManager.addPlayer('Papa', 'green');
-        PlayerManager.addPlayer('Mama', 'blue');
-        PlayerManager.setCurrentPlayer('Phil');
-        goToPlayerUrl();
-    }; */
-
-    /* const goToPlayerUrl = () => {
-        useNavigate('/player');
-    }; */
-
     return (
         <div>
             <PlayerBar></PlayerBar>
@@ -96,10 +84,7 @@ function Calculator() {
                     <div className="displayText">{numberStr}</div>
                 </div>
                 <div className="row">
-                    <button
-                        className="calBtn lightGrey first"
-                        /* style={{ color: 'black !important' }} */
-                        onClick={clear}>
+                    <button className="calBtn lightGrey first" onClick={clear}>
                         C
                     </button>
                     <a
@@ -134,7 +119,7 @@ function Calculator() {
                         onClick={() => onNumberClick(9)}>
                         9
                     </button>
-                    <button className="calBtn orange">?</button>
+                    <PlayPauseButton></PlayPauseButton>
                 </div>
                 <div className="row">
                     <button

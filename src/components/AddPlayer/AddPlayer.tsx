@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
-
+import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
 import playerIcon from '../../assets/icons/player.png';
 import scoreIcon from '../../assets/icons/score.png';
 import githubIcon from '../../assets/icons/github.png';
@@ -90,7 +90,7 @@ function AddPlayer() {
                         style={{ backgroundColor: 'green' }}
                         onClick={() => onColorClick('green')}></button>
 
-                    <button className="calBtn orange">?</button>
+                    <PlayPauseButton></PlayPauseButton>
                 </div>
                 <div className="row">
                     <button
