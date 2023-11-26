@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../global.scss';
 import playIcon from '../../assets/icons/play.png';
 import pauseIcon from '../../assets/icons/pause.png';
 
+import { usePlaying, useTogglePlaying } from '../../providers/TimeProvider.tsx';
+
 function PlayPauseButton() {
-    const [playing, setPlaying] = useState(false);
+    const playing = usePlaying();
+    const togglePlaying = useTogglePlaying();
 
     return (
-        <button className="calBtn orange" onClick={() => setPlaying(!playing)}>
+        <button className="calBtn orange" onClick={togglePlaying}>
             <img
                 className="icon"
                 src={playing ? pauseIcon : playIcon}
-                alt="P"></img>
+                alt="P"
+            ></img>
         </button>
     );
 }

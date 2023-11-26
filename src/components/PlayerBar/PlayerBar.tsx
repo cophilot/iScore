@@ -18,12 +18,13 @@ function PlayerBar() {
                         ? ''
                         : PlayerManager.currentPlayer.name)
                 }
-                key={player.name}></PlayerElement>
+                key={player.name}
+            ></PlayerElement>
         );
     }
     if (playerElements.length === 0) {
         playerElements.push(
-            <i style={{ color: 'white', marginTop: 10 }}>
+            <i style={{ color: 'white', marginTop: 10 }} key="noPlayer">
                 No players yet. Click the player icon to add a player.
             </i>
         );
