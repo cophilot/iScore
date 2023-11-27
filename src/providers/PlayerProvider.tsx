@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Player from '../utils/Player.ts';
+import { useGetFromLS, useStoreInLS } from './StorageProvider.tsx';
 //import PlayerManager from '../utils/PlayerManager';
 
 const PlayerContext = React.createContext({
@@ -7,6 +8,10 @@ const PlayerContext = React.createContext({
 
     // eslint-disable-next-line no-unused-vars
     addPlayer: (name: string, color: string): boolean => {
+        return false;
+    },
+    // eslint-disable-next-line no-unused-vars
+    removePlayer: (name: string): boolean => {
         return false;
     },
     getCurrentPlayer: (): Player | undefined => {
@@ -39,6 +44,16 @@ export function useAddPlayer() {
         throw new Error('useAddPlayer must be used within a PlayingProvider');
     }
     return context.addPlayer;
+}
+
+export function useRemovePlayer() {
+    const context = React.useContext(PlayerContext);
+    if (!context) {
+        throw new Error(
+            'useRemovePlayer must be used within a PlayingProvider'
+        );
+    }
+    return context.removePlayer;
 }
 
 export function useGetCurrentPlayer() {
@@ -97,6 +112,10 @@ export function usePlayerReset() {
 }
 
 export function PlayerProvider({ children }) {
+    const storeinLS = useStoreInLS();
+
+    const getFromLS = useGetFromLS();
+
     const [players, setPlayers] = React.useState<Player[]>(
         Player.getEmptyPlayerArray()
     );
@@ -104,6 +123,15 @@ export function PlayerProvider({ children }) {
     const [currentPlayer, setCurrentPlayer] = React.useState<
         Player | undefined
     >(undefined);
+
+    const savePlayers = (p: Player[], cp: Player | undefined) => {
+        storeinLS('iscore-players', JSON.stringify(p));
+        if (cp !== undefined) {
+            storeinLS('iscore-current-player', cp.name);
+        } else {
+            storeinLS('iscore-current-player', '');
+        }
+    };
 
     const addPlayer = (name: string, color: string): boolean => {
         for (let i = 0; i < players.length; i++) {
@@ -118,12 +146,26 @@ export function PlayerProvider({ children }) {
         if (currentPlayer === undefined) {
             setCurrentPlayer(newPlayer);
         }
+        savePlayers(players, currentPlayer);
         return true;
+    };
+
+    const removePlayer = (name: string): boolean => {
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].name === name) {
+                players.splice(i, 1);
+                setPlayers(players);
+                savePlayers(players, currentPlayer);
+                return true;
+            }
+        }
+        return false;
     };
 
     const getCurrentPlayer = (): Player | undefined => {
         return currentPlayer;
     };
+
     const getNextPlayer = (): Player | undefined => {
         if (currentPlayer === undefined) {
             return undefined;
@@ -140,12 +182,13 @@ export function PlayerProvider({ children }) {
         players.forEach((player) => {
             if (player.name === name) {
                 setCurrentPlayer(player);
+                savePlayers(players, player);
                 return;
             }
         });
     };
 
-    const rotate = async () => {
+    const rotate = () => {
         if (currentPlayer === undefined) {
             return;
         }
@@ -156,8 +199,9 @@ export function PlayerProvider({ children }) {
         // add player at index to end of array
         currentPlayer.round++;
         players.push(currentPlayer);
-        await setCurrentPlayer(players[0]);
-        await setPlayers(players);
+        setCurrentPlayer(players[0]);
+        setPlayers(players);
+        savePlayers(players, players[0]);
     };
 
     const getCurrentRound = (): number => {
@@ -177,13 +221,27 @@ export function PlayerProvider({ children }) {
 
     const reset = () => {
         setPlayers(Player.getEmptyPlayerArray());
+        setCurrentPlayer(undefined);
+        savePlayers(Player.getEmptyPlayerArray(), undefined);
     };
+
+    useEffect(() => {
+        const playersFromLS = JSON.parse(getFromLS('iscore-players'));
+        if (playersFromLS !== null) {
+            setPlayers(playersFromLS);
+        }
+        const currentPlayerName = getFromLS('iscore-current-player');
+        if (currentPlayerName !== null) {
+            setCurrentPlayerName(currentPlayerName);
+        }
+    }, []);
 
     return (
         <PlayerContext.Provider
             value={{
                 players: players,
                 addPlayer: addPlayer,
+                removePlayer: removePlayer,
                 getCurrentPlayer: getCurrentPlayer,
                 rotate: rotate,
                 setCurrentPlayer: setCurrentPlayerName,

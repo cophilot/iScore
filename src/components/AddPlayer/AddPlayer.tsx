@@ -5,10 +5,11 @@ import SettingsButton from '../SettingsButton/SettingsButton.tsx';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
 import playerIcon from '../../assets/icons/player.png';
 import scoreIcon from '../../assets/icons/score.png';
-import githubIcon from '../../assets/icons/github.png';
+import trophyIcon from '../../assets/icons/trophy.png';
 import pbIcon from '../../assets/icons/pb.png';
 import { Link } from 'react-router-dom';
 import { useAddPlayer } from '../../providers/PlayerProvider.tsx';
+import PlayerBar from '../PlayerBar/PlayerBar.tsx';
 
 function AddPlayer() {
     const [nameInput, setNameInput] = useState('');
@@ -39,6 +40,7 @@ function AddPlayer() {
 
     return (
         <div>
+            <PlayerBar emptyText="No players yet. You can add a player here."></PlayerBar>
             <div className="container">
                 <p style={{ color: 'red' }}>{wrongtext}</p>
                 <div className="display">
@@ -55,20 +57,15 @@ function AddPlayer() {
                     </button>
                     <a
                         className="calBtn lightGrey"
-                        href="https://github.com/phil1436/iScore"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <img className="icon" src={githubIcon} alt="GH"></img>
-                    </a>
-                    <a
-                        className="calBtn lightGrey"
                         href="https://philipp-bonin.com/"
                         target="_blank"
                         rel="noreferrer"
                     >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
+                    <Link className="calBtn lightGrey" to="/scoreboard">
+                        <img className="icon" src={trophyIcon} alt="SB"></img>
+                    </Link>
                     <SettingsButton></SettingsButton>
                 </div>
                 <div className="row">

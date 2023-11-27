@@ -1,0 +1,13 @@
+.scoreboardBox {
+    margin-top: 50px;
+    color: white;
+    left: 50%;
+    z-index: 100;
+    p {
+        text-align: center;
+    }
+    * {
+        margin-bottom: 10px;
+        text-decoration: none;
+    }
+}

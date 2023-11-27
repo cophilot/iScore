@@ -1,17 +1,17 @@
 /* eslint-disable indent */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
 import playerIcon from '../../assets/icons/player.png';
-import githubIcon from '../../assets/icons/github.png';
+import trophyIcon from '../../assets/icons/trophy.png';
 import pbIcon from '../../assets/icons/pb.png';
 import PlayerBar from '../PlayerBar/PlayerBar.tsx';
 import { Link } from 'react-router-dom';
 import {
     useGetCurrentPlayer,
-    useGetNextPlayer,
+    //useGetNextPlayer,
     useRotate,
 } from '../../providers/PlayerProvider.tsx';
 
@@ -24,7 +24,16 @@ function Calculator() {
 
     const getCurrentPlayer = useGetCurrentPlayer();
     const rotate = useRotate();
-    const getNextPlayer = useGetNextPlayer();
+    //const getNextPlayer = useGetNextPlayer();
+
+    useEffect(() => {
+        let currentPlayer = getCurrentPlayer();
+        if (currentPlayer === undefined) {
+            return;
+        }
+        setNumber(currentPlayer.score);
+        setNumberStr(currentPlayer.score.toString());
+    }, [getCurrentPlayer()]);
 
     const onNumberClick = (n) => {
         let num = add || subtract ? number2 : number;
@@ -67,14 +76,6 @@ function Calculator() {
             currentPlayer.score = newNumber;
         } else {
             rotate();
-            // sleep for 100ms
-            const nextPlayer = getNextPlayer();
-            if (nextPlayer === undefined) {
-                return;
-            }
-            console.log(nextPlayer.name);
-            setNumber(nextPlayer.score);
-            setNumberStr(nextPlayer.score.toString());
         }
 
         setAdd(false);
@@ -93,7 +94,7 @@ function Calculator() {
 
     return (
         <div>
-            <PlayerBar></PlayerBar>
+            <PlayerBar emptyText="No players yet. Click the player icon to add a player."></PlayerBar>
             <div className="container">
                 <div className="display">
                     <div className="displayText">{numberStr}</div>
@@ -104,20 +105,15 @@ function Calculator() {
                     </button>
                     <a
                         className="calBtn lightGrey"
-                        href="https://github.com/phil1436/iScore"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        <img className="icon" src={githubIcon} alt="GH"></img>
-                    </a>
-                    <a
-                        className="calBtn lightGrey"
                         href="https://philipp-bonin.com/"
                         target="_blank"
                         rel="noreferrer"
                     >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
+                    <Link className="calBtn lightGrey" to="/scoreboard">
+                        <img className="icon" src={trophyIcon} alt="SB"></img>
+                    </Link>
                     <SettingsButton></SettingsButton>
                 </div>
                 <div className="row">

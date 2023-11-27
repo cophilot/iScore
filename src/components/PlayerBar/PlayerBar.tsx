@@ -6,7 +6,7 @@ import { usePlayers } from '../../providers/PlayerProvider.tsx';
 import { useGetCurrentPlayer } from '../../providers/PlayerProvider.tsx';
 import Player from '../../utils/Player.ts';
 
-function PlayerBar() {
+function PlayerBar({ emptyText = 'No players yet.' }) {
     let playerElements: any[] = [];
 
     const players = usePlayers();
@@ -32,7 +32,7 @@ function PlayerBar() {
     if (playerElements.length === 0) {
         playerElements.push(
             <i style={{ color: 'white', marginTop: 10 }} key="noPlayer">
-                No players yet. Click the player icon to add a player.
+                {emptyText}
             </i>
         );
     }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useGetFromLS, useStoreInLS } from './StorageProvider.tsx';
 
 const TimeContext = React.createContext({
     time: 0,
@@ -8,6 +9,9 @@ const TimeContext = React.createContext({
     // eslint-disable-next-line no-unused-vars
     togglePlaying: () => {},
     reset: () => {},
+    getTimeAsString: (): string => {
+        return '00:00:00';
+    },
 });
 
 // costum hook
@@ -46,9 +50,22 @@ export function useResetTimer() {
     return context.reset;
 }
 
+export function useGetTimeAsString() {
+    const context = React.useContext(TimeContext);
+    if (!context) {
+        throw new Error(
+            'useGetTimeAsString must be used within a PlayingProvider'
+        );
+    }
+    return context.getTimeAsString;
+}
+
 export function TimeProvider({ children }) {
     const [time, setTime] = useState(0);
     const [playing, setPlaying] = useState(false);
+
+    const storeInLS = useStoreInLS();
+    const getFromLS = useGetFromLS();
 
     const togglePlaying = () => {
         saveToLocalStorage(!playing, time);
@@ -67,14 +84,30 @@ export function TimeProvider({ children }) {
     };
 
     const saveToLocalStorage = (pPlaying: boolean, pTime: number) => {
-        localStorage.setItem(
+        storeInLS(
             'iscore-timer',
             JSON.stringify({ playing: pPlaying, time: pTime })
         );
     };
 
+    const getTimeAsString = (): string => {
+        const hours: number = Math.floor(time / 3600);
+
+        const minutes: number = Math.floor((time % 3600) / 60);
+
+        const seconds: number = time % 60;
+
+        return (
+            hours.toString().padStart(2, '0') +
+            ':' +
+            minutes.toString().padStart(2, '0') +
+            ':' +
+            seconds.toString().padStart(2, '0')
+        );
+    };
+
     useEffect(() => {
-        const data = localStorage.getItem('iscore-timer');
+        const data = getFromLS('iscore-timer');
         if (data) {
             const { playing, time } = JSON.parse(data);
             setPlaying(playing);
@@ -95,7 +128,9 @@ export function TimeProvider({ children }) {
     }, [playing, time]);
 
     return (
-        <TimeContext.Provider value={{ time, playing, togglePlaying, reset }}>
+        <TimeContext.Provider
+            value={{ time, playing, togglePlaying, reset, getTimeAsString }}
+        >
             {children}
         </TimeContext.Provider>
     );
