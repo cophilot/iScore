@@ -2,7 +2,7 @@ import React from 'react';
 import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import './Settings.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useResetTimer } from '../../providers/TimeProvider.tsx';
 import { usePlayerReset } from '../../providers/PlayerProvider.tsx';
 import {
@@ -23,6 +23,8 @@ function Settings() {
     const acceptCookies = useAcceptCookie();
 
     const rejectCookies = useRejectCookies();
+
+    const navigate = useNavigate();
 
     return (
         <div className="container settingsBox">
@@ -68,16 +70,16 @@ function Settings() {
                     By Philipp B.
                 </DoubleBtn>
             </a>
-            <Link to="/">
-                <DoubleBtn
-                    onClick={() => {}}
-                    btnWidth={btnWidth}
-                    middleText={true}
-                    orange={true}
-                >
-                    Back
-                </DoubleBtn>
-            </Link>
+            <DoubleBtn
+                onClick={() => {
+                    navigate('/');
+                }}
+                btnWidth={btnWidth}
+                middleText={true}
+                orange={true}
+            >
+                Back
+            </DoubleBtn>
         </div>
     );
 }

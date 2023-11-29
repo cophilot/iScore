@@ -7,13 +7,13 @@ import scoreIcon from '../../assets/icons/score.png';
 import trophyIcon from '../../assets/icons/trophy.png';
 import pbIcon from '../../assets/icons/pb.png';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
-import { Link } from 'react-router-dom';
 import PlayerBar from '../PlayerBar/PlayerBar.tsx';
 import PlayerPage from '../../utils/PlayerPage.ts';
 import {
     usePlayers,
     useRemovePlayer,
 } from '../../providers/PlayerProvider.tsx';
+import MyLink from '../MyLink/MyLink.tsx';
 
 function PlayerOverview() {
     const [playerPages, setPlayerPages] = useState<PlayerPage[]>([
@@ -94,9 +94,9 @@ function PlayerOverview() {
                     >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
-                    <Link className="calBtn lightGrey" to="/scoreboard">
+                    <MyLink lightGrey={true} to="/scoreboard">
                         <img className="icon" src={trophyIcon} alt="SB"></img>
-                    </Link>
+                    </MyLink>
                     <SettingsButton></SettingsButton>
                 </div>
                 <div className="row">
@@ -243,13 +243,9 @@ function PlayerOverview() {
                     >
                         {getPlayerName(2, 2)[0]}
                     </button>
-                    <Link
-                        className="calBtn orange"
-                        to="/add-player"
-                        style={{ textDecoration: 'none' }}
-                    >
+                    <MyLink orange={true} to="/add-player">
                         +
-                    </Link>
+                    </MyLink>
                 </div>
                 <div className="row">
                     <DoubleBtn
@@ -272,9 +268,9 @@ function PlayerOverview() {
                     >
                         {'>'}
                     </button>
-                    <Link className="calBtn orange" to="/">
+                    <MyLink orange={true} to="/">
                         <img className="icon" src={scoreIcon} alt="S"></img>
-                    </Link>
+                    </MyLink>
                 </div>
             </div>
         </div>

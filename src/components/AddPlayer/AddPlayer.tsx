@@ -3,13 +3,14 @@ import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
-import playerIcon from '../../assets/icons/player.png';
-import scoreIcon from '../../assets/icons/score.png';
-import trophyIcon from '../../assets/icons/trophy.png';
-import pbIcon from '../../assets/icons/pb.png';
-import { Link } from 'react-router-dom';
 import { useAddPlayer } from '../../providers/PlayerProvider.tsx';
 import PlayerBar from '../PlayerBar/PlayerBar.tsx';
+import MyLink from '../MyLink/MyLink.tsx';
+
+import scoreboardIcon from '../../assets/icons/score.png';
+import pbIcon from '../../assets/icons/pb.png';
+import playerIcon from '../../assets/icons/player.png';
+import trophyIcon from '../../assets/icons/trophy.png';
 
 function AddPlayer() {
     const [nameInput, setNameInput] = useState('');
@@ -63,9 +64,9 @@ function AddPlayer() {
                     >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
-                    <Link className="calBtn lightGrey" to="/scoreboard">
+                    <MyLink lightGrey={true} to="/scoreboard">
                         <img className="icon" src={trophyIcon} alt="SB"></img>
-                    </Link>
+                    </MyLink>
                     <SettingsButton></SettingsButton>
                 </div>
                 <div className="row">
@@ -156,12 +157,16 @@ function AddPlayer() {
                     <DoubleBtn onClick={add} btnWidth={170}>
                         Add
                     </DoubleBtn>
-                    <Link className="calBtn grey" to="/player">
+                    <MyLink grey={true} to="/player">
                         <img className="icon" src={playerIcon} alt="P"></img>
-                    </Link>
-                    <Link className="calBtn orange" to="/">
-                        <img className="icon" src={scoreIcon} alt="S"></img>
-                    </Link>
+                    </MyLink>
+                    <MyLink orange={true} to="/">
+                        <img
+                            className="icon"
+                            src={scoreboardIcon}
+                            alt="S"
+                        ></img>
+                    </MyLink>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import '../global.scss';
 import { usePlayers } from '../../providers/PlayerProvider.tsx';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useGetCurrentRound } from '../../providers/PlayerProvider.tsx';
 import { useGetTimeAsString } from '../../providers/TimeProvider.tsx';
 import './Scoreboard.scss';
@@ -10,6 +10,8 @@ import './Scoreboard.scss';
 function Scoreboard() {
     const btnWidth = window.innerWidth * 0.9;
     const marginLeft = window.innerWidth * 0.05;
+
+    const navigate = useNavigate();
 
     const players = usePlayers().sort((a, b) => b.score - a.score);
 
@@ -50,16 +52,16 @@ function Scoreboard() {
                     </div>
                 ))}
                 <div style={{ marginLeft: marginLeft }}>
-                    <Link to="/">
-                        <DoubleBtn
-                            onClick={() => {}}
-                            btnWidth={btnWidth}
-                            middleText={true}
-                            orange={true}
-                        >
-                            Back
-                        </DoubleBtn>
-                    </Link>
+                    <DoubleBtn
+                        onClick={() => {
+                            navigate('/');
+                        }}
+                        btnWidth={btnWidth}
+                        middleText={true}
+                        orange={true}
+                    >
+                        Back
+                    </DoubleBtn>
                 </div>
             </div>
         </>

@@ -1,13 +1,13 @@
 import React from 'react';
 import '../global.scss';
 import settingsIcon from '../../assets/icons/settings.png';
-import { Link } from 'react-router-dom';
+import MyLink from '../MyLink/MyLink.tsx';
 
 function SettingsButton() {
     return (
-        <Link className="calBtn orange" to="/settings">
+        <MyLink orange={true} to="/settings">
             <img className="icon" src={settingsIcon} alt="S"></img>
-        </Link>
+        </MyLink>
     );
 }
 

@@ -4,16 +4,16 @@ import '../global.scss';
 import DoubleBtn from '../DoubleBtn/DoubleBtn.tsx';
 import SettingsButton from '../SettingsButton/SettingsButton.tsx';
 import PlayPauseButton from '../PlayPauseButton/PlayPauseButton.tsx';
+import PlayerBar from '../PlayerBar/PlayerBar.tsx';
+import {
+    useGetCurrentPlayer,
+    useRotate,
+} from '../../providers/PlayerProvider.tsx';
+import MyLink from '../MyLink/MyLink.tsx';
+
 import playerIcon from '../../assets/icons/player.png';
 import trophyIcon from '../../assets/icons/trophy.png';
 import pbIcon from '../../assets/icons/pb.png';
-import PlayerBar from '../PlayerBar/PlayerBar.tsx';
-import { Link } from 'react-router-dom';
-import {
-    useGetCurrentPlayer,
-    //useGetNextPlayer,
-    useRotate,
-} from '../../providers/PlayerProvider.tsx';
 
 function Calculator() {
     const [numberStr, setNumberStr] = useState('iScore');
@@ -111,9 +111,9 @@ function Calculator() {
                     >
                         <img className="icon" src={pbIcon} alt="PB"></img>
                     </a>
-                    <Link className="calBtn lightGrey" to="/scoreboard">
+                    <MyLink lightGrey={true} to="/scoreboard">
                         <img className="icon" src={trophyIcon} alt="SB"></img>
-                    </Link>
+                    </MyLink>
                     <SettingsButton></SettingsButton>
                 </div>
                 <div className="row">
@@ -197,9 +197,9 @@ function Calculator() {
                     <DoubleBtn onClick={() => onNumberClick(0)} btnWidth={170}>
                         0
                     </DoubleBtn>
-                    <Link className="calBtn grey" to="/player">
+                    <MyLink grey={true} to="/player">
                         <img className="icon" src={playerIcon} alt="P"></img>
-                    </Link>
+                    </MyLink>
                     <button className="calBtn orange" onClick={equal}>
                         =
                     </button>
