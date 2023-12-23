@@ -36,11 +36,7 @@ function PlayerBar({ emptyText = 'No players yet.' }) {
             </i>
         );
     }
-    return (
-        <div className="scrollable-container">
-            <div className="scrollable-content">{playerElements}</div>
-        </div>
-    );
+    return <div className="scrollable-container">{playerElements}</div>;
 }
 
 export default PlayerBar;
