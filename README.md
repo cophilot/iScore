@@ -9,17 +9,17 @@
 
 <!-- Badges -->
 <div align="center">
-   <a href="https://github.com/phil1436/iscore/blob/master/LICENSE">
-       <img src="https://img.shields.io/github/license/phil1436/iscore" alt="license" />
+   <a href="https://github.com/cophilot/iscore/blob/master/LICENSE">
+       <img src="https://img.shields.io/github/license/cophilot/iscore" alt="license" />
    </a>
-   <a href="https://github.com/phil1436/iscore/stargazers">
-       <img src="https://img.shields.io/github/stars/phil1436/iscore" alt="stars" />
+   <a href="https://github.com/cophilot/iscore/stargazers">
+       <img src="https://img.shields.io/github/stars/cophilot/iscore" alt="stars" />
    </a>
-   <a href="https://github.com/phil1436/iscore/commits/master">
-       <img src="https://img.shields.io/github/last-commit/phil1436/iscore" alt="last commit" />
+   <a href="https://github.com/cophilot/iscore/commits/master">
+       <img src="https://img.shields.io/github/last-commit/cophilot/iscore" alt="last commit" />
    </a>
 </div>
 
 ---
 
-by [Philipp B.](https://github.com/phil1436)
+by [Philipp B.](https://github.com/cophilot)
