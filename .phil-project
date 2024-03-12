@@ -1,3 +1,4 @@
-logo:public/logo.png
-logo_small:public/logo_small.png
-description_translate:de
+#?=
+logo=public/logo.png
+logo_small=public/logo_small.png
+description_translate=de
